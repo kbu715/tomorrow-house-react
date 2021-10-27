@@ -13,3 +13,5 @@ export function visuallyHidden() {
     border: 0 !important;
   `
 }
+
+// 웹 접근성
