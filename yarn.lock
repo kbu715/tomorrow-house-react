@@ -2052,6 +2052,11 @@
   "resolved" "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.0.tgz"
   "version" "2.0.0"
 
+"@types/store@^2.0.2":
+  "integrity" "sha512-ZPHnXkzmGMfk+pHqAGzTSpA9CbsHmJLgkvOl5w52LZ0XTxB1ZIHWZzQ7lEtjTNWScBbsQekg8TjApMXkMe4nkw=="
+  "resolved" "https://registry.npmjs.org/@types/store/-/store-2.0.2.tgz"
+  "version" "2.0.2"
+
 "@types/styled-components@^5.1.15":
   "integrity" "sha512-4evch8BRI3AKgb0GAZ/sn+mSeB+Dq7meYtMi7J/0Mg98Dt1+r8fySOek7Sjw1W+Wskyjc93565o5xWAT/FdY0Q=="
   "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.15.tgz"
@@ -10873,6 +10878,11 @@
   "integrity" "sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks="
   "resolved" "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz"
   "version" "1.1.1"
+
+"store@^2.0.12":
+  "integrity" "sha1-jFNOKguDH3K3X8XxEZhXxE711ZM="
+  "resolved" "https://registry.npmjs.org/store/-/store-2.0.12.tgz"
+  "version" "2.0.12"
 
 "stream-browserify@^2.0.1":
   "integrity" "sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg=="
