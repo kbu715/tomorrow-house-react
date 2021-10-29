@@ -6,13 +6,13 @@ interface ModalState {
   modals: Modal[]
 }
 
-const INITIAL_STATE: ModalState = {
+const initialState: ModalState = {
   modals: [],
 }
 
 const modalSlice = createSlice({
   name: 'modals',
-  initialState: INITIAL_STATE,
+  initialState,
   reducers: {
     setModal: (state: ModalState, action: PayloadAction<Modal>) => {
       state.modals.push(action.payload)
@@ -28,7 +28,7 @@ const modalSlice = createSlice({
         )
       }
     },
-    resetModal: () => INITIAL_STATE,
+    resetModal: () => initialState,
   },
 })
 

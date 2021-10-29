@@ -8,6 +8,7 @@ export interface AvatarProps {
   to?: string
   image?: string
   size?: AvatarSize
+  className: string
 }
 
 export const Avatar = ({
@@ -15,6 +16,7 @@ export const Avatar = ({
   to,
   image = '',
   size = 'small',
+  className,
 }: AvatarProps) => {
   const alt = `${username}님`
 

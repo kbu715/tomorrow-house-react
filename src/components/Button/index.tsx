@@ -6,6 +6,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outlined'
 
 interface ButtonProps {
   size: ButtonSize
+  to?: string
   variant: ButtonVariant
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
