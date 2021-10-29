@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme } from 'src/styles'
 import { GlobalStyle } from './globalStyle'
+import Effects from 'src'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          <Effects />
           <Route exact path="/" component={App} />
         </ThemeProvider>
       </BrowserRouter>
