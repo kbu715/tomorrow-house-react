@@ -7,7 +7,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme } from 'src/styles'
 import { GlobalStyle } from './globalStyle'
-import Effects from 'src'
+import Effects from './Effects'
 
 ReactDOM.render(
   <React.StrictMode>
