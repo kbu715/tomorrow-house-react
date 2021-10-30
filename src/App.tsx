@@ -2,7 +2,7 @@ import React from 'react'
 import 'normalize.css'
 
 import { useAppSelector } from 'src/hooks'
-import { getModals } from 'src/app/modals'
+import { getModals } from 'src/app/modal'
 
 import { Column, Container, Row } from 'src/components/Grid'
 import { Modal } from 'src/components/Modal'
