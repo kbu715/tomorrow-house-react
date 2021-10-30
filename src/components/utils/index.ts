@@ -1,4 +1,4 @@
-export const getGnbMenuName = (category: string) => {
+export function getGnbMenuName(category: string) {
   switch (category) {
     case 'community':
       return '커뮤니티'
@@ -9,4 +9,8 @@ export const getGnbMenuName = (category: string) => {
     default:
       return '커뮤니티'
   }
+}
+
+export function getSearchQueryUrl(value: string) {
+  return `/search?query=${value}`
 }
