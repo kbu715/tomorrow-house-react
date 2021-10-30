@@ -36,10 +36,11 @@ const App: React.FC = () => {
               {
                 label: '이디아',
                 value: '이디아',
+                disabled: true,
               },
               {
-                label: '메가커피',
-                value: '메가커피',
+                label: '투썸',
+                value: '투썸',
               },
             ]}
           />

@@ -37,7 +37,7 @@ export const Select: React.FC<SelectProps> = ({
   return (
     <StyledSelectGroup>
       <StyledFormControl
-        as="select"
+        as="select" // FIXME: https://styled-components.com/docs/api#as-polymorphic-prop
         className={className}
         defaultValue={value}
         disabled={disabled}
@@ -61,7 +61,7 @@ export const Select: React.FC<SelectProps> = ({
           )
         })}
       </StyledFormControl>
-      <CaretIcon className="icon" />
+      {/* <CaretIcon className="icon" /> */}
     </StyledSelectGroup>
   )
 }
