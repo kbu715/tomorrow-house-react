@@ -8,33 +8,42 @@ export interface AvatarProps {
   to?: string
   image?: string
   size?: AvatarSize
-  className: string
+  className?: string
 }
 
-export const Avatar = ({
+export const Avatar: React.FC<AvatarProps> = ({
   username,
   to,
   image = '',
   size = 'small',
   className,
-}: AvatarProps) => {
+}) => {
   const alt = `${username}님`
 
   if (to != null) {
     if (!image)
-      return <StyledAvatar size={size} as={Link} to={to} aria-label={alt} />
+      return (
+        <StyledAvatar
+          className={className}
+          size={size}
+          as={Link}
+          to={to}
+          aria-label={alt}
+        />
+      )
 
     return (
-      <StyledAvatar size={size} as={Link} to={to}>
+      <StyledAvatar className={className} size={size} as={Link} to={to}>
         <img src={image} alt={alt} />
       </StyledAvatar>
     )
   }
 
-  if (!image) return <StyledAvatar size={size} aria-label={alt} />
+  if (!image)
+    return <StyledAvatar className={className} size={size} aria-label={alt} />
 
   return (
-    <StyledAvatar size={size}>
+    <StyledAvatar className={className} size={size}>
       <img src={image} alt={alt} />
     </StyledAvatar>
   )

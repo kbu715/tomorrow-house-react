@@ -8,12 +8,12 @@ export interface RowProps {
   children?: ReactNode
 }
 
-export const Row = ({
+export const Row: React.FC<RowProps> = ({
   className,
   justifyContent,
   alignItems,
   children,
-}: RowProps) => {
+}) => {
   return (
     <StyledRow
       className={className}
