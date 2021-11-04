@@ -16,12 +16,14 @@ interface SidebarDrawerProps {
   category: string
   urlMap: Record<string, string>
   closeSidebar?: () => void
+  isLast?: boolean // 마지막 요소인지 판단 => border-bottom 값을 주기 위한 조치
 }
 
 export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
   category,
   urlMap,
   closeSidebar,
+  isLast,
 }) => {
   const [open, setOpen] = useState(false)
 
@@ -46,8 +48,14 @@ export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
   }
 
   return (
-    <StyledSidebarDrawer className={cx('drawerMenu', category, { open })}>
-      <button className="drawerMenuButton" type="button" onClick={toggleOpen}>
+    <StyledSidebarDrawer
+      className={cx('drawerMenu', category, { open }, { isLast })}
+    >
+      <button
+        className={cx('drawerMenuButton')}
+        type="button"
+        onClick={toggleOpen}
+      >
         {icon}
         {label}
         <ChevronIcon className="chevron" />
