@@ -72,7 +72,7 @@ const button48 = css`
 `
 
 const button55 = css`
-  ${textStyle('lg')};
+  ${textStyle('md')};
   height: 55px;
 `
 
@@ -105,6 +105,13 @@ export const StyledButton = styled.button<StyledButtonProps>`
     cursor: not-allowed;
     opacity: 0.4;
   }
+
+  svg {
+    display: block;
+    width: 16px;
+    height: auto;
+  }
+
   ${({ variant }) => setButtonVariant(variant)}
   ${({ size }) => setButtonSize(size)}
 `

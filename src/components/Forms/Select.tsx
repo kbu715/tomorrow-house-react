@@ -52,7 +52,7 @@ export const Select: React.FC<SelectProps> = ({
       >
         {options.map((option, i) => {
           const key = `${option.value}-${id}-${i}`
-          console.log(value === String(option.value))
+          // console.log(value === String(option.value))
 
           return (
             <option value={option.value} key={key} disabled={option.disabled}>
@@ -61,7 +61,7 @@ export const Select: React.FC<SelectProps> = ({
           )
         })}
       </StyledFormControl>
-      {/* <CaretIcon className="icon" /> */}
+      <CaretIcon className="icon" />
     </StyledSelectGroup>
   )
 }

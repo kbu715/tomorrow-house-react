@@ -11,6 +11,7 @@ export function textStyle(size: TypographyScale) {
 }
 
 export function truncate() {
+  // ...
   return css`
     overflow: hidden;
     white-space: nowrap;

@@ -20,6 +20,7 @@ interface ButtonProps {
 
 type ButtonElement = HTMLButtonElement | HTMLAnchorElement
 
+// ref prop으로 넘길 때
 export const Button = forwardRef<ButtonElement, ButtonProps>(
   (
     {
