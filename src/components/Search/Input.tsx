@@ -9,9 +9,13 @@ import { Input } from '../Forms'
 
 interface SearchInputProps {
   onFocus?: () => void
+  className?: string
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onFocus }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({
+  onFocus,
+  className,
+}) => {
   const dispatch = useAppDispatch()
   const { history } = useRouter()
 
@@ -46,6 +50,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onFocus }) => {
       onChange={handleChange}
       onFocus={onFocus}
       onKeyPress={handleEnter}
+      className={className}
     >
       <button className="icon" type="button" onClick={handleSubmit}>
         <SearchIcon />

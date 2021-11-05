@@ -16,3 +16,5 @@ export const StyledOverlay = styled.div`
   opacity: 0.7;
   animation: ${animations.fadeIn70} 300ms ease-in-out;
 `
+
+export const StyledSearchModal = styled.aside``

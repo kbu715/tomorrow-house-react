@@ -1,26 +1,35 @@
 import React from 'react'
 
-import { useResponsive } from 'src/hooks'
+import { useResponsive, useModals } from 'src/hooks'
+import { ModalCategory } from 'src/types/enum'
 
 import { Button } from '../Button'
 import { SearchHistory, SearchInput } from '../Search'
+import { Grid } from '../Grid'
+import { StyledSearchModal } from './styles'
 
 export const SearchModal: React.FC = () => {
   const { isDesktop } = useResponsive()
+  const { removeModal } = useModals()
 
   if (isDesktop) return null
 
-  return (
-    <aside>
-      <header className="searchModalHeader">
-        <h1 className="visuallyHidden">검색창</h1>
-        <SearchInput />
-        <Button size={40} variant="ghost">
-          취소
-        </Button>
-      </header>
+  const closeModal = () => removeModal(ModalCategory.SearchModal)
 
-      <SearchHistory />
-    </aside>
+  return (
+    <StyledSearchModal>
+      <Grid sm={4}>
+        <header className="searchModalHeader">
+          <h1 className="visuallyHidden">검색창</h1>
+          <div className="formGroup">
+            <SearchInput className="searchInput" />
+            <Button className="close" variant="ghost" onClick={closeModal}>
+              취소
+            </Button>
+          </div>
+        </header>
+        <SearchHistory />
+      </Grid>
+    </StyledSearchModal>
   )
 }
