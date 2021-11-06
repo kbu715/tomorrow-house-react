@@ -3,6 +3,7 @@ import modalReducer from './modal'
 import authReducer from './auth'
 import systemReducer from './system'
 import searchHistoryReducer from './searchHistory'
+import toastReducer from './toast'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     modal: modalReducer,
     system: systemReducer,
     searchHistory: searchHistoryReducer,
+    toast: toastReducer,
   },
 })
 
