@@ -37,9 +37,22 @@ export const Sidebar: React.FC = () => {
 
       <nav className="sidebarNav">
         <h2 className="visuallyHidden">메뉴</h2>
-        <SidebarDrawer category="community" urlMap={navMap.community} />
-        <SidebarDrawer category="store" urlMap={navMap.store} />
-        <SidebarDrawer category="expert" urlMap={navMap.expert} isLast />
+        <SidebarDrawer
+          category="community"
+          urlMap={navMap.community}
+          closeSidebar={closeSidebar}
+        />
+        <SidebarDrawer
+          category="store"
+          urlMap={navMap.store}
+          closeSidebar={closeSidebar}
+        />
+        <SidebarDrawer
+          category="expert"
+          urlMap={navMap.expert}
+          closeSidebar={closeSidebar}
+          isLast
+        />
       </nav>
 
       <div className="sidebarUserMenu">

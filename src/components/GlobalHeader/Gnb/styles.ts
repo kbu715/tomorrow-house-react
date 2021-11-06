@@ -10,8 +10,8 @@ import {
   textStyle,
 } from 'src/styles/utils'
 
-const GNB_HEIGHT_SM = `50px`
-const GNB_HEIGHT_LG = `80px`
+export const GNB_HEIGHT_SM = `50px`
+export const GNB_HEIGHT_LG = `80px`
 const GNB_ICON_BUTTON_BADGE = `16px`
 const GNB_NAV_PADDING = `8px`
 const GNB_USER_MENU_BUTTON_SIZE = `32px`
@@ -82,7 +82,6 @@ export const StyledGnbNav = styled.nav`
   }
   .gnbNavItem {
     margin-right: ${24 - stripPx(GNB_NAV_PADDING) * 2}px;
-    &.active,
     &:hover {
       a {
         color: ${({ theme }) => theme.colors.blue};
@@ -98,6 +97,10 @@ export const StyledGnbNav = styled.nav`
       font-weight: 700;
       white-space: nowrap;
       color: ${({ theme }) => theme.colors.primary};
+
+      &.active {
+        color: ${({ theme }) => theme.colors.blue};
+      }
     }
   }
 `
