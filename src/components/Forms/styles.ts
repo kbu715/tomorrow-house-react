@@ -30,6 +30,7 @@ export const StyledFormControl = styled.input`
 `
 
 export const StyledFormGroup = styled.div`
+  width: 100%;
   position: relative;
   input {
     padding-left: 40px;
