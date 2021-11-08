@@ -25,6 +25,7 @@ export const StyledGnb = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   .gnbWrapper {
     ${flexbox('between')}
+    position: relative;
     width: 100%;
     height: ${GNB_HEIGHT_SM};
   }
