@@ -14,11 +14,13 @@ import { StyledSearchHistory } from './styles'
 interface SearchHistoryProps {
   className?: string
   hideWhenEmpty?: boolean
+  onClick?: () => void
 }
 
 export const SearchHistory: React.FC<SearchHistoryProps> = ({
   className,
   hideWhenEmpty,
+  onClick,
 }) => {
   const dispatch = useAppDispatch()
   const histories = useAppSelector(getSearchHistory)
@@ -56,6 +58,7 @@ export const SearchHistory: React.FC<SearchHistoryProps> = ({
                 history={history}
                 deleteHistory={deleteHistory}
                 key={history.createdAt}
+                onClick={onClick}
               />
             ))
           ) : (

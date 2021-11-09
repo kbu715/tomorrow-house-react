@@ -10,11 +10,13 @@ import { Input } from '../Forms'
 interface SearchInputProps {
   onFocus?: () => void
   className?: string
+  onSubmit?: () => void
 }
 
 export const SearchInput: React.FC<SearchInputProps> = ({
   onFocus,
   className,
+  onSubmit,
 }) => {
   const dispatch = useAppDispatch()
   const { history } = useRouter()
@@ -35,6 +37,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     postSubmit()
     dispatch(setSearchHistory(value))
     setValue('')
+    if (onSubmit) onSubmit()
   }
 
   const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
