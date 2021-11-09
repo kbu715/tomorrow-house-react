@@ -22,13 +22,24 @@ const searchHistorySlice = createSlice({
       action: PayloadAction<string>
     ) => {
       if (!action.payload) return
-      const newHistories = [
+
+      let previousHistories = [...state.histories]
+      const matchIndex = state.histories.findIndex(
+        (history) => history.content === action.payload
+      )
+
+      console.log(matchIndex)
+
+      if (matchIndex >= 0) previousHistories.splice(matchIndex, 1)
+
+      let newHistories = [
         {
           content: action.payload,
           createdAt: Date.now(),
         },
-        ...state.histories,
+        ...previousHistories,
       ]
+
       state.histories = newHistories.slice(0, MAX_COUNT)
     },
     deleteSearchHistory: (

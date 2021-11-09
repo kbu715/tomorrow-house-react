@@ -8,7 +8,7 @@ interface ToastViewProps {
 
 export const ToastView: React.FC<ToastViewProps> = ({ toast }) => {
   const { removeToast } = useToast()
-  const { category, props } = toast
+  const { category } = toast
 
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
 
