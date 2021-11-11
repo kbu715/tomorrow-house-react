@@ -4,7 +4,7 @@ import { useAppSelector } from 'src/hooks'
 import { getModals } from 'src/app/modal'
 import { getToasts } from 'src/app/toast'
 import { GlobalFooter, GlobalHeader, Modal, Toast } from 'src/components'
-import ProductDetailPage from './ProductDetailPage'
+import ProductDetailPage from './pages/ProductDetail'
 
 const Routes: React.FC = () => {
   const modals = useAppSelector(getModals)
