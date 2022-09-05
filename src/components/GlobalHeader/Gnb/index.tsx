@@ -1,8 +1,13 @@
-import React, { memo, useCallback, useState } from 'react'
+import React, { memo, useCallback, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import cx from 'classnames'
 
-import { useAppSelector, useModal, useResponsive } from 'src/hooks'
+import {
+  useAppSelector,
+  useClickOutside,
+  useModal,
+  useResponsive,
+} from 'src/hooks'
 import { ModalCategory } from 'src/types/enum'
 import { getUser } from 'src/app/auth'
 
@@ -36,6 +41,8 @@ const Gnb: React.FC<GnbProps> = ({ className }) => {
 
   const [tooltipOpen, setTooltipOpen] = useState(false)
 
+  const tooltipRef = useRef<HTMLDivElement>(null)
+
   const openSidebar = () => {
     addModal({
       category: ModalCategory.SidebarModal,
@@ -54,6 +61,10 @@ const Gnb: React.FC<GnbProps> = ({ className }) => {
     if (tooltipOpen) setTooltipOpen(false)
     else setTooltipOpen(true)
   }, [tooltipOpen])
+
+  const closeTooltip = useCallback(() => setTooltipOpen(false), [])
+
+  useClickOutside(tooltipRef, closeTooltip)
 
   return (
     <StyledGnb className={cx('gnb', className)}>
@@ -128,7 +139,7 @@ const Gnb: React.FC<GnbProps> = ({ className }) => {
             </div>
 
             {!isMobile && (
-              <WritePostContainer>
+              <WritePostContainer ref={tooltipRef}>
                 <Button
                   size={40}
                   variant="primary"
