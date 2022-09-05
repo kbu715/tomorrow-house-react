@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import cx from 'classnames'
 
@@ -20,7 +20,8 @@ import { Grid } from '../../Grid'
 import { GnbNav } from './Nav'
 import { GnbSearch } from './Search'
 import { GnbUserMenu } from './UserMenu'
-import { StyledGnb, StyledGnbIconButton } from './styles'
+import { StyledGnb, StyledGnbIconButton, WritePostContainer } from './styles'
+import TooltipBox from '../../Tooltip'
 
 interface GnbProps {
   className?: string
@@ -32,6 +33,8 @@ const Gnb: React.FC<GnbProps> = ({ className }) => {
 
   const { isMobile, isDesktop } = useResponsive()
   const { addModal } = useModal()
+
+  const [tooltipOpen, setTooltipOpen] = useState(false)
 
   const openSidebar = () => {
     addModal({
@@ -46,6 +49,11 @@ const Gnb: React.FC<GnbProps> = ({ className }) => {
       props: {},
     })
   }
+
+  const handleTooltip = useCallback(() => {
+    if (tooltipOpen) setTooltipOpen(false)
+    else setTooltipOpen(true)
+  }, [tooltipOpen])
 
   return (
     <StyledGnb className={cx('gnb', className)}>
@@ -120,10 +128,19 @@ const Gnb: React.FC<GnbProps> = ({ className }) => {
             </div>
 
             {!isMobile && (
-              <Button size={40} variant="primary" type="button">
-                글쓰기
-                <ChevronIcon />
-              </Button>
+              <WritePostContainer>
+                <Button
+                  size={40}
+                  variant="primary"
+                  type="button"
+                  onClick={handleTooltip}
+                >
+                  글쓰기
+                  <ChevronIcon />
+                </Button>
+                {/* 툴팁 박스 */}
+                <TooltipBox tooltipOpen={tooltipOpen} />
+              </WritePostContainer>
             )}
           </div>
         </div>

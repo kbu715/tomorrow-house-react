@@ -277,3 +277,7 @@ export const StyledGnbUserMenu = styled.div`
     }
   }
 `
+
+export const WritePostContainer = styled.div`
+  position: relative;
+`
