@@ -5,12 +5,21 @@ import { useAppSelector } from 'src/hooks'
 import { getModals } from 'src/app/modal'
 
 import { Modal } from 'src/components'
+import UnControlled from 'src/components/Uncontrolled'
 
 const ProductDetailPage: React.FC = () => {
   const modals = useAppSelector(getModals)
   return (
     <div>
-      <p>
+      <main className="container">
+        <article>
+          <header>
+            <h3>비제어 FORM</h3>
+          </header>
+          <UnControlled />
+        </article>
+      </main>
+      {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
         laudantium dicta! Dolorem incidunt, voluptatem porro sint voluptate
         facere enim consequuntur ut officiis impedit nam dolorum, odit iste
@@ -122,7 +131,7 @@ const ProductDetailPage: React.FC = () => {
         ratione! Voluptates perferendis dignissimos aliquam, cum consequatur
         nemo vitae eveniet facere, possimus pariatur nihil impedit, voluptatibus
         autem modi?
-      </p>
+      </p> */}
 
       {modals.length > 0 && <Modal />}
     </div>

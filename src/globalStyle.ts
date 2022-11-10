@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-  button,
+  /* button,
   input,
   select,
   textarea {
@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
       outline: none;
       box-shadow: none;
     }
-  }
+  } */
   a,
   button {
     cursor: pointer;
