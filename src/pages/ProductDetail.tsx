@@ -4,8 +4,9 @@ import 'normalize.css'
 import { useAppSelector } from 'src/hooks'
 import { getModals } from 'src/app/modal'
 
+import RadioForm from 'src/components/Radio'
+
 import { Modal } from 'src/components'
-import UnControlled from 'src/components/Uncontrolled'
 
 const ProductDetailPage: React.FC = () => {
   const modals = useAppSelector(getModals)
@@ -14,9 +15,9 @@ const ProductDetailPage: React.FC = () => {
       <main className="container">
         <article>
           <header>
-            <h3>비제어 FORM</h3>
+            <h3>Radio Group 비제어 컴포넌트 활용</h3>
           </header>
-          <UnControlled />
+          <RadioForm />
         </article>
       </main>
       {/* <p>
