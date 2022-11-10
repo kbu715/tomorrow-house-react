@@ -1,25 +1,28 @@
-// 2. React Hook - useState 활용 Uncontrolled Component
-
-import { FormEventHandler, useState } from 'react'
+// 2. React Hook - useRef 활용 Uncontrolled Component (useState HTML Element를 저장하는데 보다 최적화 됨)
+import { FormEventHandler, useRef } from 'react'
 
 const Form = () => {
-  const [input, setInput] = useState<HTMLInputElement | null>(null)
-  const [select, setSelect] = useState<HTMLSelectElement | null>(null)
-  const [textArea, setTextArea] = useState<HTMLTextAreaElement | null>(null)
-  const [radio0, setRadio0] = useState<HTMLInputElement | null>(null)
-  const [radio1, setRadio1] = useState<HTMLInputElement | null>(null)
-  const [radio2, setRadio2] = useState<HTMLInputElement | null>(null)
-  const [checkbox, setCheckbox] = useState<HTMLInputElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const selectRef = useRef<HTMLSelectElement | null>(null)
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
+  const radioRefs = [
+    useRef<HTMLInputElement | null>(null),
+    useRef<HTMLInputElement | null>(null),
+    useRef<HTMLInputElement | null>(null),
+  ]
+  const checkboxRef = useRef<HTMLInputElement | null>(null)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
     alert(
       JSON.stringify({
-        input: input?.value,
-        select: select?.value,
-        radio: [radio0, radio1, radio2].find((radio) => radio?.checked)?.value,
-        textArea: textArea?.value,
-        checkbox: checkbox?.checked,
+        input: inputRef.current?.value,
+        select: selectRef.current?.value,
+        textarea: textAreaRef.current?.value,
+        radio: radioRefs
+          .map(({ current }) => current)
+          .find((current) => current?.checked)?.value,
+        chekbox: checkboxRef.current?.checked,
       })
     )
   }
@@ -28,20 +31,12 @@ const Form = () => {
     <form onSubmit={handleSubmit}>
       <label>
         제목
-        <input
-          name="title"
-          defaultValue=""
-          ref={(element) => setInput(element)}
-        />
+        <input name="title" defaultValue="" ref={inputRef} />
       </label>
 
       <label>
         국가
-        <select
-          name="country"
-          defaultValue="한국"
-          ref={(element) => setSelect(element)}
-        >
+        <select name="country" defaultValue="한국" ref={selectRef}>
           <option>한국</option>
           <option>미국</option>
           <option>중국</option>
@@ -55,22 +50,14 @@ const Form = () => {
         <textarea
           name="description"
           defaultValue="HELLO WORLD!"
-          rows={5}
-          cols={40}
-          ref={(element) => setTextArea(element)}
+          ref={textAreaRef}
         />
       </label>
 
       <fieldset>
         <legend>크기</legend>
         <label>
-          <input
-            type="radio"
-            name="size"
-            value="소"
-            ref={(element) => setRadio0(element)}
-          />
-          소
+          <input type="radio" name="size" value="소" ref={radioRefs[0]} />소
         </label>
         <label>
           <input
@@ -78,27 +65,17 @@ const Form = () => {
             name="size"
             value="중"
             defaultChecked
-            ref={(element) => setRadio1(element)}
+            ref={radioRefs[1]}
           />
           중
         </label>
         <label>
-          <input
-            type="radio"
-            name="size"
-            value="대"
-            ref={(element) => setRadio2(element)}
-          />
-          대
+          <input type="radio" name="size" value="대" ref={radioRefs[2]} />대
         </label>
       </fieldset>
 
       <label>
-        <input
-          type="checkbox"
-          name="terms"
-          ref={(element) => setCheckbox(element)}
-        />
+        <input type="checkbox" name="terms" ref={checkboxRef} />
         약관에 동의합니다.
       </label>
 
