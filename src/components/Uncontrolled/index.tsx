@@ -1,24 +1,25 @@
-// 1. DOM API 활용 Uncontrolled Component
+// 2. React Hook - useState 활용 Uncontrolled Component
 
-import { FormEventHandler } from 'react'
+import { FormEventHandler, useState } from 'react'
 
 const Form = () => {
+  const [input, setInput] = useState<HTMLInputElement | null>(null)
+  const [select, setSelect] = useState<HTMLSelectElement | null>(null)
+  const [textArea, setTextArea] = useState<HTMLTextAreaElement | null>(null)
+  const [radio0, setRadio0] = useState<HTMLInputElement | null>(null)
+  const [radio1, setRadio1] = useState<HTMLInputElement | null>(null)
+  const [radio2, setRadio2] = useState<HTMLInputElement | null>(null)
+  const [checkbox, setCheckbox] = useState<HTMLInputElement | null>(null)
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
-    const {
-      subject: { value: title },
-      country: { value: select },
-      description: { value: textArea },
-      size: { value: radio },
-      terms: { checked: checkbox },
-    } = event.currentTarget
     alert(
       JSON.stringify({
-        title,
-        select,
-        textArea,
-        radio,
-        checkbox,
+        input: input?.value,
+        select: select?.value,
+        radio: [radio0, radio1, radio2].find((radio) => radio?.checked)?.value,
+        textArea: textArea?.value,
+        checkbox: checkbox?.checked,
       })
     )
   }
@@ -27,40 +28,77 @@ const Form = () => {
     <form onSubmit={handleSubmit}>
       <label>
         제목
-        <input name="subject" defaultValue="" />
+        <input
+          name="title"
+          defaultValue=""
+          ref={(element) => setInput(element)}
+        />
       </label>
 
       <label>
         국가
-        <select name="country" defaultValue="한국">
+        <select
+          name="country"
+          defaultValue="한국"
+          ref={(element) => setSelect(element)}
+        >
           <option>한국</option>
           <option>미국</option>
           <option>중국</option>
           <option>영국</option>
-          <option>일본</option>
+          <option>태국</option>
         </select>
       </label>
 
       <label>
         내용
-        <textarea name="description" defaultValue="Hello World!" />
+        <textarea
+          name="description"
+          defaultValue="HELLO WORLD!"
+          rows={5}
+          cols={40}
+          ref={(element) => setTextArea(element)}
+        />
       </label>
 
       <fieldset>
         <legend>크기</legend>
         <label>
-          <input type="radio" name="size" value="소" defaultChecked />소
+          <input
+            type="radio"
+            name="size"
+            value="소"
+            ref={(element) => setRadio0(element)}
+          />
+          소
         </label>
         <label>
-          <input type="radio" name="size" value="중" />중
+          <input
+            type="radio"
+            name="size"
+            value="중"
+            defaultChecked
+            ref={(element) => setRadio1(element)}
+          />
+          중
         </label>
         <label>
-          <input type="radio" name="size" value="대" />대
+          <input
+            type="radio"
+            name="size"
+            value="대"
+            ref={(element) => setRadio2(element)}
+          />
+          대
         </label>
       </fieldset>
 
       <label>
-        <input type="checkbox" name="terms" />
+        <input
+          type="checkbox"
+          name="terms"
+          ref={(element) => setCheckbox(element)}
+        />
         약관에 동의합니다.
       </label>
 
