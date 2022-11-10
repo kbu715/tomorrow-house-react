@@ -9,7 +9,7 @@ const RadioForm = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          alert(`${e.currentTarget.category.value}를 통해 연락드리겠습니다!`)
+          alert(`${category}를 선택하셨습니다!`)
         }}
       >
         <RadioGroup label="개발 분야" value={category} onChange={setCategory}>
@@ -21,6 +21,8 @@ const RadioForm = () => {
           </Radio>
         </RadioGroup>
         <footer>{category}을 선택하셨습니다!</footer>
+
+        <button type="submit">선택 완료</button>
       </form>
     </>
   )
